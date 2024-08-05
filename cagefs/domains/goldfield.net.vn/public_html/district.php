@@ -8,7 +8,7 @@
       $quan=[];
       while ($row=mysqli_fetch_array($result)){
         $quan[] = array(
-          'districtid' => $row['districtid'],
+          'districtid' => $row['district_id'],
           'name' => $row['name'],
         );
       }

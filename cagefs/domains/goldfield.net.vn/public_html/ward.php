@@ -8,7 +8,7 @@
       $xa=[];
       while ($row=mysqli_fetch_array($result)){
         $xa[] = array(
-          'wardid' => $row['wardid'],
+          'wardid' => $row['ward_id'],
           'name' => $row['name'],
         );
       }

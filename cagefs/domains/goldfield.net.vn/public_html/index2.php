@@ -16,7 +16,7 @@
       $tinh=[];
       while ($row=mysqli_fetch_array($result)){
         $tinh[] = array(
-          'provinceid' => $row['provinceid'],
+          'provinceid' => $row['province_id'],
           'name' => $row['name'],
         );
       }
