@@ -1,0 +1,355 @@
+# Webalizer V2.23-08 Incremental Data - 08/05/2024 00:31:00
+2024 8 5 0 31 0
+133 59 56 8 8 19 1178796 26 19 0
+1 29 29 1 5
+15 5 43628 15 5 5
+36 12 119030 19 12 9
+14 3 47227 13 3 3
+39 19 915650 14 4 1
+29 20 53261 1 2 1
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+32 20 56093 2
+4 1 18946 1
+2 0 1888 0
+3 1 6055 1
+1 1 4194 1
+1 1 4615 1
+6 1 20861 1
+4 2 10705 2
+2 0 1888 0
+1 0 944 0
+4 1 7447 1
+1 0 944 0
+2 0 1888 0
+12 4 49080 4
+9 2 38898 2
+2 0 1888 0
+3 1 18029 1
+5 4 19420 4
+2 0 1888 0
+5 1 4083 1
+1 0 944 0
+28 18 903235 4
+2 1 3919 0
+1 0 944 0
+0
+0
+0
+59
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+2
+72
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+# -urls- 
+/backend/vendor/bootstrap/css/bootstrap.min.css.map
+0 1 0 646701 0 0
+/backend/vendor/bootstrap/js/bootstrap.min.js.map
+0 1 0 191755 0 0
+/chitietdonhang.php
+0 13 0 42295 0 0
+/sanpham.php
+0 4 0 14894 0 0
+/giohang.php
+0 3 0 8193 0 0
+/detail.php
+0 3 0 10241 0 0
+/district.php
+0 8 0 2652 0 0
+/
+0 26 0 192263 19 1
+# End Of Table - urls
+# -sites- (monthly)
+66.249.69.35
+0 1 1 4194 1 1722495796
+/
+34.221.100.185
+0 1 1 4623 1 1722533727
+/
+103.131.71.162
+0 1 0 944 0 0
+-
+103.131.71.62
+0 1 0 944 0 0
+-
+103.131.71.86
+0 1 0 944 0 0
+-
+45.148.10.206
+0 2 0 1834 0 0
+-
+103.131.71.33
+0 1 0 944 0 0
+-
+178.254.12.183
+0 1 1 4615 1 1722664032
+/
+103.131.71.135
+0 1 0 944 0 0
+-
+103.131.71.180
+0 1 0 944 0 0
+-
+198.235.24.181
+0 1 1 16141 1 1722648066
+/
+103.131.71.200
+0 1 0 944 0 0
+-
+103.131.71.48
+0 1 0 944 0 0
+-
+103.131.71.131
+0 1 0 944 0 0
+-
+103.131.71.235
+0 1 0 944 0 0
+-
+103.131.71.207
+0 1 0 944 0 0
+-
+103.131.71.203
+0 1 0 944 0 0
+-
+103.131.71.41
+0 1 0 944 0 0
+-
+205.169.39.20
+0 1 1 4615 1 1722519598
+/
+103.131.71.89
+0 1 0 944 0 0
+-
+125.235.237.57
+0 55 39 956639 2 1722817356
+/
+103.131.71.32
+0 1 0 944 0 0
+-
+103.131.71.67
+0 1 0 944 0 0
+-
+147.185.132.79
+0 1 1 16141 1 1722702530
+/
+103.131.71.178
+0 1 0 944 0 0
+-
+103.131.71.206
+0 2 0 1888 0 0
+-
+103.131.71.202
+0 1 0 944 0 0
+-
+52.213.249.203
+0 1 1 307 1 1722628595
+/
+103.131.71.20
+0 1 0 944 0 0
+-
+103.131.71.234
+0 1 0 944 0 0
+-
+66.249.69.34
+0 1 0 944 0 0
+-
+103.131.71.201
+0 1 0 944 0 0
+-
+103.131.71.211
+0 1 0 944 0 0
+-
+34.221.63.230
+0 1 1 4615 1 1722533715
+/
+66.249.71.137
+0 1 0 944 0 0
+-
+203.119.9.50
+0 1 1 16141 1 1722493616
+/
+103.131.71.216
+0 1 0 944 0 0
+-
+103.131.71.107
+0 1 0 944 0 0
+-
+66.249.69.36
+0 1 0 944 0 0
+-
+103.131.71.184
+0 1 0 944 0 0
+-
+103.131.71.208
+0 2 0 1888 0 0
+-
+152.32.158.96
+0 8 2 37954 1 1722606118
+/
+66.249.66.68
+0 1 0 944 0 0
+-
+103.131.71.53
+0 2 0 1888 0 0
+-
+152.42.135.52
+0 2 2 9238 1 1722620801
+/
+206.168.34.116
+0 2 1 5559 1 1722595722
+/
+103.131.71.212
+0 3 0 2832 0 0
+-
+104.166.80.196
+0 1 1 4623 1 1722584352
+/
+103.131.71.161
+0 1 0 944 0 0
+-
+180.149.24.6
+0 1 1 4194 1 1722571173
+/
+103.131.71.236
+0 1 0 944 0 0
+-
+103.131.71.199
+0 1 0 944 0 0
+-
+206.168.34.127
+0 2 1 5567 1 1722606357
+/
+152.32.219.102
+0 8 2 37954 1 1722610501
+/
+103.131.71.217
+0 1 0 944 0 0
+-
+216.19.199.221
+0 1 1 4194 1 1722571251
+/
+# End Of Table - sites (monthly)
+# -sites- (daily)
+125.235.237.57
+0 29 20 53261 1 1722817356
+/
+# End Of Table - sites (daily)
+# -referrers- 
+https://goldfield.net.vn/giohang.php
+0 13
+https://goldfield.net.vn/chitietdonhang.php
+0 28
+- (Direct Request)
+0 80
+https://goldfield.net.vn/detail.php
+0 2
+https://goldfield.net.vn/index.php
+0 2
+https://goldfield.net.vn/sanpham.php
+0 5
+https://goldfield.net.vn/
+0 2
+https://www.netcraft.com/survey/
+0 1
+# End Of Table - referrers
+# -agents- 
+Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0
+0 1
+Mozilla/4.0 (compatible; Netcraft Web Server Survey)
+0 1
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36
+0 55
+Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+0 4
+Mozilla/5.0 (compatible; CensysInspect/1.1; +https://about.censys.io/)
+0 4
+Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.6478.182 Mobile
+0 1
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+0 2
+Mozilla/5.0 (compatible; coccocbot-web/1.0; +http://help.coccoc.com/searchengine)
+0 15
+Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+0 2
+Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+0 1
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.10 Safari/537.36 Edg/77.0.2
+0 1
+Mozilla/5.0 (X11; Linux i686; rv:109.0) Gecko/20100101 Firefox/120.0
+0 1
+Mozilla/5.0 (compatible; coccocbot-image/1.0; +http://help.coccoc.com/searchengine)
+0 23
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120
+0 4
+Expanse, a Palo Alto Networks company, searches across the global IPv4 space multiple times per day to identify customers&#39
+0 1
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11
+0 12
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36 Edg/91.0.
+0 1
+Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/99.0.4844.47 Mobile/15E
+0 2
+Mozilla/5.0 (Linux; Android 7.1.2; Redmi 4X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.111 Mobile Safari/537.36
+0 1
+# End Of Table - agents
+# -search strings- 
+# End Of Table - search strings
+# -usernames- 
+# End Of Table - usernames
