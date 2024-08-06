@@ -57,8 +57,6 @@
                 
             endif;
             ?>
-
-            
         </div>
     </div>
     <div class="container mt-3" style="background-color: white;">

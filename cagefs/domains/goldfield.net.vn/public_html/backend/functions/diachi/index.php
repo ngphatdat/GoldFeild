@@ -10,16 +10,15 @@
 </head>
 <body>
     <?php
-      $conn=mysqli_connect("localhost","root","","diachi");
+      include_once('connectdb.php');
       $sql="select * from province";
       $result=mysqli_query($conn,$sql);
       $tinh=[];
       while ($row=mysqli_fetch_array($result)){
         $tinh[] = array(
-          'provinceid' => $row['provinceid'],
+          'provinceid' => $row['province_id'],
           'name' => $row['name'],
-        );
-      }
+        );}
     ?>
     <select class="form-control" name="province" id="province" required="">
         <option value="">Tỉnh / Thành phố</option>

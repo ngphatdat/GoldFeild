@@ -1,14 +1,14 @@
 <option value="">Xã / Phường / Thị trấn</option>
 <?php
     $districtid=$_POST['districtId'];
-    $conn=mysqli_connect("localhost","root","","diachi");
+    $conn=mysqli_connect("localhost","root","","tfeqrnuy_diachi");
     $sql="select * from ward where districtid = '$districtid' ";
     // $sql="select * from district where provinceid = '04TTT' ";
       $result=mysqli_query($conn,$sql);
       $xa=[];
       while ($row=mysqli_fetch_array($result)){
         $xa[] = array(
-          'wardid' => $row['wardid'],
+          'wardid' => $row['ward_id'],
           'name' => $row['name'],
         );
       }
