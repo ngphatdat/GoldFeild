@@ -31,7 +31,26 @@
 <body>
     <?php
         include_once('header.php');
-    ?>
+
+    ?><?php
+                    $sql = <<<EOT
+                     select hoa.hoa_ten, hoa.hoa_gia, hoa.hoa_giacu, hsp.hsp_tentaptin ,hoa.hoa_ma
+                    from hoa 
+                    JOIN hinhsanpham AS hsp ON hoa.hoa_ma=hsp.hoa_ma
+                    ORDER BY RAND()
+EOT;
+                    $result=mysqli_query($conn,$sql);
+                    $sp = [];
+                    while($row=mysqli_fetch_array($result)){
+                        $sp[] = array(
+                            'hoa_ten' => $row['hoa_ten'],
+                            'hoa_ma' => $row['hoa_ma'],
+                            'hoa_gia' => $row['hoa_gia'],
+                            'hoa_giacu' => $row['hoa_giacu'],
+                            'hsp_tentaptin' => $row['hsp_tentaptin'],
+                        );
+                    };
+                ?>
 
 <div class="swiper-container">
     <div class="swiper-wrapper">
