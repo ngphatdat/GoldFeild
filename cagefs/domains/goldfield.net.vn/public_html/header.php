@@ -7,7 +7,11 @@
     <script src="backend/vendor/jquery/jquery.min.js"></script>
     <link rel="stylesheet" href="backend/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="backend/vendor/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/header.css">
+    <!-- Swiper.js CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
     <style>
         #slideshow-container {
     position: relative;
@@ -71,26 +75,33 @@
 }
 
 
-
     </style>
     <title>Document</title>
 </head>
     <?php
         include_once('connectdb.php');
     ?>
+    <!-- Swiper.js JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 <body style="background-color: #dcdcdc;">
-    <div class="container-fluid" style="background-color: white;">
-        <div class="row text-center" style="height: 120px;">
-            <div class="col-md-1"></div>
-            <div class="col-md-2 mt-1 text-center">
-                <a href="index.php"><img src="backend/assets/imgs/logosmall.png"></a>
-            </div>
-            <div class="col-md-4"></div>
-            <div class="col-md-4 mt-4">
-            </div>
-            <div class="col-md-1"></div>
-            <div class="col-md-1"></div>
+<div class="container-fluid" style="background-color: white;">
+    <div class="row text-center align-items-center">
+        <div class="col-md-3 d-flex justify-content-center">
+            <a href="index.php">
+                <img src="backend/assets/imgs/logosmall.png" alt="Logo" style="max-width: 100%; height: auto;">
+            </a>
+        </div>
+         <div class="col-md-4""></div>
+            <div class="col-md-4 d-flex justify-content-center">
+            <a href="giohang.php" class="d-flex align-items-center">
+                <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+                <span class="ms-2">Giỏ hàng</span>
+            </a>
+        </div>
     </div>
+</div>
+
     <div class="container-fluid">
         <div class="row">               
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -101,7 +112,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="index.php">GIỚI THIỆU<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="index.php">TRANG CHỦ<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="sanpham.php">SẢN PHẨM<span class="sr-only">(current)</span></a>
@@ -121,54 +132,5 @@
         </div>
     </div>
 
-    <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div id="slideshow-container">
-                <div id="slide1" class="slide">
-                    <img src="backend/assets/imgs/bg1.jpg" alt="Slide 1">
-                </div>
-                <div id="slide2" class="slide">
-                    <img src="backend/assets/imgs/bg2.jpg" alt="Slide 2">
-                </div>
-                <div id="slide3" class="slide">
-                    <img src="backend/assets/imgs/bg3.jpg" alt="Slide 3">
-                </div>
-                <a id="prev" class="navigation" onclick="plusSlides(-1)">&#10094;</a>
-                <a id="next" class="navigation" onclick="plusSlides(1)">&#10095;</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-    <script>
-        let slideIndex = 0;
-        showSlides();
-
-        function showSlides() {
-            let slides = document.getElementsByClassName("slide");
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1 }    
-            if (slideIndex < 1) { slideIndex = slides.length }
-            slides[slideIndex-1].style.display = "block";  
-            setTimeout(showSlides, 5000); // Thay đổi slide mỗi 3 giây
-        }
-
-        function plusSlides(n) {
-            slideIndex += n;
-            if (slideIndex > document.getElementsByClassName("slide").length) {
-                slideIndex = 1;
-            } else if (slideIndex < 1) {
-                slideIndex = document.getElementsByClassName("slide").length;
-            }
-            showSlides();
-        }
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

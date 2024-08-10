@@ -23,7 +23,6 @@
     <?php
         include_once('header.php');
     ?>
-        <div class="gh"><a href="giohang.php"><i class="fa fa-shopping-cart fa-3x" aria-hidden="true" ></i><br>Giỏ hàng</a></div>
     <div class="container mt-5 mb-3" style="background-color: white;">
         <div class="row">
             <div class="col-md-12">
