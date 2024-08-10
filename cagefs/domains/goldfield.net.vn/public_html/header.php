@@ -7,37 +7,73 @@
     <script src="backend/vendor/jquery/jquery.min.js"></script>
     <link rel="stylesheet" href="backend/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="backend/vendor/font-awesome/css/font-awesome.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/header.css">
     <style>
-        a:hover{
-            text-decoration: none;
-            color:black;
-        }
-        ul{
-            text-align: left;
-            margin-left: 38px;
-            padding: 0px;
-            list-style-type: none;
-        }
-        ul li a{  
-            text-decoration: none;
-            color:black;
-            font-size: 20px;
-            display: block;
-            
-        }
-        ul li{
-            height: 33px;
-        }
-        ul li a:hover{
-            color: black;
-            font-weight: bold;
-            text-decoration: none;
-        }
-        b{
-            font-size: 25px;
-        }
+        #slideshow-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+}
+
+.navigation {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+#prev {
+    left: 0;
+}
+
+#next {
+    right: 0;
+}
+
+.navigation:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+.navbar {
+    width: 100%; /* Điều chỉnh chiều rộng của navbar theo ý muốn */
+    margin: 0 auto; /* Căn giữa navbar */
+}
+
+.navbar-collapse {
+    width: 100%;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Căn giữa các mục trong navbar */
+    width: 100%; /* Đảm bảo navbar-nav chiếm toàn bộ chiều rộng của navbar */
+}
+
+.nav-item {
+    margin: 0 15px; /* Tạo khoảng cách giữa các mục */
+}
+
+.nav-link {
+    text-align: center; /* Căn giữa nội dung liên kết */
+}
+
+
+
     </style>
+    <title>Document</title>
 </head>
     <?php
         include_once('connectdb.php');
@@ -54,111 +90,85 @@
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-1"></div>
-        </div>
-        
-
-        <div class="row" style="background-color: #ffe6f2;">
-            <div class="col-md-1"></div>
-            
-            <div class="col-md-10">
-            <div id="demo" class="carousel slide" data-ride="carousel">
-                
-                
-                <div class="carousel-inner">
-                <div class="carousel-item active text-center">
-                    <img src="backend/assets/imgs/bg.jpg" style="width : 100%; max : width 948px; ">
-                </div>
-                </div>
-                </div>
-            </div>   
     </div>
-    <!-- <div class="container">
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-2"><b><a href="index.php">GIỚI THIỆU</a></b></div>
-            <div class="col-md-2"><b><a href="sanpham.php">SẢN PHẨM</b></a></div>
-            <div class="col-md-2"><b><a href="chinhsach.php">CHÍNH SÁCH</a></b></div>
-            <div class="col-md-2"><b><a href="baiviet.php">BÀI VIẾT</a></b></div>
-            <div class="col-md-2"><b><a href="dichvu.php">DỊCH VỤ</a></b></div>
-            <div class="col-md-1"></div>
-        </div>
-    </div> -->
     <div class="container-fluid">
-        <div class="row">
-            
-                <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 40px;">
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <div class="col-md-01"></div>
-                            <div class="col-md-02">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="index.php">GIỚI THIỆU<span class="sr-only">(current)</span></a>
-                                </li>
-                            </div>
-                            <div class="col-md-02">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="index.php">GIỚI THIỆU<span class="sr-only">(current)</span></a>
-                                </li>
-                            </div>
-                            <div class="col-md-02">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="index.php">GIỚI THIỆU<span class="sr-only">(current)</span></a>
-                                </li>
-                            </div>
-                            <div class="col-md-02">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="index.php">GIỚI THIỆU<span class="sr-only">(current)</span></a>
-                                </li>
-                            </div>
-                            <div class="col-md-02">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="index.php">GIỚI THIỆU<span class="sr-only">(current)</span></a>
-                                </li>
-                            </div>
-                            <div class="col-md-01"></div>
-                        </ul>
-                    </div>
-                </nav> -->
-                <nav class="navbar navbar-expand-lg navbar-light bg-light" style="">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+        <div class="row">               
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="width: 100%;">
-                        <ul class="navbar-nav mr-auto">
-                            <div style="width: 250px">     
-                                <li class="nav-item active" >
-                                    <a class="nav-link" href="index.php" style="width: 100%">GIỚI THIỆU<span class="sr-only">(current)</span></a>
-                                </li>
-                            </div>
-                            <div style="width: 250px">     
-                                <li class="nav-item active" >
-                                    <a class="nav-link" href="sanpham.php"  style="width: 100%">SẢN PHẨM<span class="sr-only">(current)</span></a>
-                                </li>
-                            </div>
-                            <div style="width: 250px">     
-                                <li class="nav-item active" >
-                                    <a class="nav-link" href="chinhsach.php"  style="width: 100%">CHÍNH SÁCH<span class="sr-only">(current)</span></a>
-                                </li>
-                            </div>
-                            <div style="width: 250px">     
-                                <li class="nav-item active" style="width: 250px">
-                                    <a class="nav-link" href="baiviet.php"  style="width: 100%">BÀI VIẾT<span class="sr-only">(current)</span></a>
-                                </li>
-                            </div>
-                            <div style="width: 250px">     
-                                <li class="nav-item active" >
-                                    <a class="nav-link" href="dichvu.php"  style="width: 100%">DỊCH VỤ<span class="sr-only">(current)</span></a>
-                                </li>
-                            </div>
-                        
-                        </ul>
-                    </div>
-                </nav>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.php">GIỚI THIỆU<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="sanpham.php">SẢN PHẨM<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="chinhsach.php">CHÍNH SÁCH<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="baiviet.php">BÀI VIẾT<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="dichvu.php">DỊCH VỤ<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
         </div>
     </div>
-    
 
-    <?php include_once("script.php")?>
+    <div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div id="slideshow-container">
+                <div id="slide1" class="slide">
+                    <img src="backend/assets/imgs/bg1.jpg" alt="Slide 1">
+                </div>
+                <div id="slide2" class="slide">
+                    <img src="backend/assets/imgs/bg2.jpg" alt="Slide 2">
+                </div>
+                <div id="slide3" class="slide">
+                    <img src="backend/assets/imgs/bg3.jpg" alt="Slide 3">
+                </div>
+                <a id="prev" class="navigation" onclick="plusSlides(-1)">&#10094;</a>
+                <a id="next" class="navigation" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }    
+            if (slideIndex < 1) { slideIndex = slides.length }
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 5000); // Thay đổi slide mỗi 3 giây
+        }
+
+        function plusSlides(n) {
+            slideIndex += n;
+            if (slideIndex > document.getElementsByClassName("slide").length) {
+                slideIndex = 1;
+            } else if (slideIndex < 1) {
+                slideIndex = document.getElementsByClassName("slide").length;
+            }
+            showSlides();
+        }
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
