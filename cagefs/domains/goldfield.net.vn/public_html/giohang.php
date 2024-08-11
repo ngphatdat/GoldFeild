@@ -1,82 +1,166 @@
+<?php
+include_once('header.php');
+include_once('connectdb.php');
+// Kiểm tra nếu người dùng đã đăng nhập, nếu chưa thì chuyển hướng đến trang đăng nhập
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit();
+}
+// Xử lý việc cập nhật giỏ hàng
+if (isset($_POST['update_cart'])) {
+    foreach ($_POST['quantities'] as $product_id => $quantity) {
+        if ($quantity > 0) {
+            foreach ($_SESSION['gioHang'] as &$item) {
+                if ($item['id'] == $product_id) {
+                    $item['soluong'] = intval($quantity);
+                    break;
+                }
+            }
+        }
+    }
+}
+// Xử lý việc xóa sản phẩm khỏi giỏ hàng
+if (isset($_GET['action']) && $_GET['action'] == 'remove' && isset($_GET['id'])) {
+    $product_id = intval($_GET['id']);
+    foreach ($_SESSION['gioHang'] as $key => $item) {
+        if ($item['id'] == $product_id) {
+            unset($_SESSION['gioHang'][$key]);
+            break;
+        }
+    }
+    $_SESSION['gioHang'] = array_values($_SESSION['gioHang']); // Re-index array
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giỏ hàng | GOLDFIELD</title>
-    <link href="backend/vendor/jqueryui/jquery-ui.min.css" type="text/css" rel="stylesheet" />
+    <title>Giỏ hàng</title>
+    <style>
+        /* CSS chung */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        td img {
+            width: 100px;
+            border-radius: 8px;
+        }
+        .table-actions {
+            text-align: center;
+        }
+        .table-actions a {
+            display: inline-block;
+            margin-right: 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+        .table-actions a:last-child {
+            margin-right: 0;
+        }
+    </style>
 </head>
 <body>
-    <?php include_once('headersmall.php')?>
-    <div class="container-fluid" style="background-color:lavender">
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
-                <table class="table" style="text-align: center;background-color:lavender">
+
+<div class="container">
+    <h1>Giỏ hàng</h1>
+
+    <?php if (!empty($_SESSION['gioHang'])): ?>
+        <form action="giohang.php" method="POST">
+            <table>
+                <thead>
                     <tr>
-                        <td ><i class="fa fa-shopping-cart fa-2x" aria-hidden="true" style="color: indianred;"></i><br>1.Giỏ hàng</td>
-                        <td><i class="fa fa-user fa-2x" aria-hidden="true"></i> <br> 2.Chi tiết đơn hàng</td>
-                        <td><i class="fa fa-credit-card fa-2x" aria-hidden="true"></i> <br> 3.Thanh toán</td>
+                        <th>Hình ảnh</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Tổng tiền</th>
+                        <th>Hành động</th>
                     </tr>
-                </table>
-            </div>
-            <div class="col-md-1"></div>
-        </div>
-    </div>
-    <div class="container" style="background-color:white">
-        <div class="row">
-            <?php
-                include_once('connectdb.php');
-                if(isset($_SESSION['gioHang'])):
-                        
-            ?>   
-            <table class="table" style="background-color: white;">
-                <th>
-                    <td>Tên hoa</td>
-                    <td>Số lượng</td>
-                    <td>Đơn giá</td>
-                    <td>Tổng tiền</td>
-                </th>
-                <?php foreach($_SESSION['gioHang'] as $sp): $tongtien=$sp['soluong']*$sp['gia']?>
-                    
-                <tr>
-                    <td><img src="backend/assets/uploads/products/<?=$sp['hinh']?>" style="height: 100px;width:100px"></td>
-                    <td><?=$sp['ten']?></td>
-                    <td><?=$sp['soluong']?></td>
-                    <td><?=number_format($sp['gia'],'0','.',',')?> VND</td>
-                    <td><?=number_format($tongtien,'0','.',',')?> VND</td>
-                    <td><a href="deleteCart.php?hoa_ma=<?=$sp['hoa_ma']?>"><i class="fa fa-trash fa-2x" aria-hidden="true" style="color: red;"></i></a></td>
-                </tr>
-                <hr>
-                <?php endforeach;?>
+                </thead>
+                <tbody>
+                    <?php
+                    $total = 0;
+                    foreach ($_SESSION['gioHang'] as $item):
+                        $total += $item['soluong'] * $item['gia'];
+                    ?>
+                        <tr>
+                            <td><img src="backend/assets/uploads/products/<?=$item['thumbnail']?>" alt="<?=$item['name']?>"></td>
+                            <td><?=$item['name']?></td>
+                            <td><?=number_format($item['price'], 0, '.', ',')?> VND</td>
+                            <td>
+                                <input type="number" name="quantities[<?=$item['id']?>]" value="<?=$item['soluong']?>" min="1" max="10" style="width: 80px;">
+                            </td>
+                            <td><?=number_format($item['soluong'] * $item['gia'], 0, '.', ',')?> VND</td>
+                            <td class="table-actions">
+                                <a href="giohang.php?action=remove&id=<?=$item['id']?>" class="btn-primary">Xóa</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
             </table>
-            <?php 
-                else :
-                    echo '<p style="text-align:center">Chưa có sản phẩm trong giỏ hàng <a href="sanpham.php">Tiếp tục mua sắm</a></p>';
-                
-            endif;
-            ?>
-        </div>
-    </div>
-    <div class="container mt-3" style="background-color: white;">
-        <form action="chitietdonhang.php" method="POST" name="frmChitiet" id="frmChitiet">
-            <div class="row text-center">
-                <div class="div text-center" style="text-align:center;">
-                    <button name="btnTT" class="btn my-3 btn-primary" style="text-align:right;">MUA HÀNG</button>
-                </div>
-            </div>
+            <button type="submit" name="update_cart" class="btn-primary">Cập nhật giỏ hàng</button>
         </form>
-    </div>
-    <?php include_once('footer.php')?>
-    <script>
-    // Yêu cầu JQUERY UI thay thế INPUT text có id="txtNgayThangNamSinh" thành công cụ chọn ngày tháng Date Picker
-    $('#date').datepicker(
-      {
-        showButtonPanel: true,    // option hiển thị nút "Today", "Done"
-        dateFormat: 'dd/mm/yy'    // option Định dạng format ngày tháng; d: Day Ngày; m: Month tháng; y: Year năm
-      }
-    );
-  </script>
+        <h2>Tổng tiền: <?=number_format($total, 0, '.', ',')?> VND</h2>
+        <a href="order.php" class="btn-primary">Tiến hành thanh toán</a>
+    <?php else: ?>
+        <p>Giỏ hàng của bạn hiện đang trống.</p>
+    <?php endif; ?>
+</div>
+
 </body>
 </html>

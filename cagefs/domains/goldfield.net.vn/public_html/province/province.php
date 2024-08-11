@@ -10,7 +10,7 @@
 </head>
 <body>
     <?php
-      include_once('connectdb.php');
+      include_once('../connectdb.php');
       $sql="select * from province";
       $result=mysqli_query($conn,$sql);
       $tinh=[];
@@ -30,8 +30,6 @@
       <select class="form-control" name="district" id="district" required="">
         <option value="">Quận / Huyện</option>
       </select>
-    <!-- <input class="billing_address_1" name="" type="hidden" value="">
-    <input class="billing_address_2" name="" type="hidden" value=""> -->
       <select class="form-control" name="ward" id="ward" required="">
         <option value="">Xã / Phường / Thị trấn</option>
       </select>
@@ -39,13 +37,13 @@
     jQuery(document).ready(function($){
       $("#province").change(function(event){
         provinceid =$("#province").val();
-        $.post('district.php', {"provinceId":provinceid}, function(data){
+        $.post('province/district.php', {"provinceId":provinceid}, function(data){
           $("#district").html(data);
         });
       });
       $("#district").change(function(event){
         districtid =$("#district").val();
-        $.post('ward.php', {"districtId":districtid}, function(data){
+        $.post('province/ward.php', {"districtId":districtid}, function(data){
           $("#ward").html(data);
         });
       });

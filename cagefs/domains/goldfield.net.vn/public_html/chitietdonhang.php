@@ -47,7 +47,7 @@
                         <tr>
                             <td>
                                 <label for="diachiNhan">Địa chỉ</label>
-                                <?php include_once('index2.php')?>
+                                <?php include_once('province/province.php')?>
                                 <input type="text" name="diachiNhan" id="diachiNhan"class="form-control" placeholder="Số nhà, tên đường,..">
                             </td>
                         </tr>
