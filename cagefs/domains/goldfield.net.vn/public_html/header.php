@@ -136,10 +136,10 @@ $is_logged_in = isset($_SESSION['user_name']);
             <div class="col-md-3 d-flex justify-content-end align-items-center auth-icons">
                 <?php if ($is_logged_in): ?>
                     <span>Hi, <?php echo htmlspecialchars($_SESSION['user_name']); ?></span>
-                    <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                    <a href="user_logout.php"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
                 <?php else: ?>
-                    <a href="login.php"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
-                    <a href="register.php"><i class="fas fa-user-plus"></i> Đăng ký</a>
+                    <a href="user_login.php"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
+                    <a href="user_register.php"><i class="fas fa-user-plus"></i> Đăng ký</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -157,7 +157,7 @@ $is_logged_in = isset($_SESSION['user_name']);
                             <a class="nav-link" href="index.php">TRANG CHỦ<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item <?php if ($current_page == 'sanpham.php') echo 'active'; ?>">
-                            <a class="nav-link" href="sanpham.php">SẢN PHẨM<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="products.php">SẢN PHẨM<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item <?php if ($current_page == 'solution.php') echo 'active'; ?>">
                             <a class="nav-link" href="solution.php">GIẢI PHÁP<span class="sr-only">(current)</span></a>
