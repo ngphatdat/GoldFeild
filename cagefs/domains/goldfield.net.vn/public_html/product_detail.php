@@ -4,6 +4,7 @@ include_once('connectdb.php');
 
 $id = intval($_GET['id']);
 
+// Fetch product details
 $sql = <<<EOT
 SELECT p.id, p.name, p.price, p.thumbnail, p.description, p.category_id
 FROM products AS p
@@ -14,7 +15,7 @@ EOT;
 $result = mysqli_query($conn, $sql);
 $product = mysqli_fetch_array($result);
 
-// Lấy tất cả hình ảnh của sản phẩm từ bảng product_images
+// Fetch all images of the product
 $sql_images = <<<EOT
 SELECT image_url
 FROM product_images
@@ -27,7 +28,7 @@ while ($image_row = mysqli_fetch_array($images_result)) {
     $images[] = $image_row['image_url'];
 }
 
-// Lấy các sản phẩm cùng danh mục cùng với hình ảnh từ bảng product_images
+// Fetch similar products
 $category_id = intval($product['category_id']);
 $sql_similar_products = <<<EOT
 SELECT p.id, p.name, p.price, 
@@ -155,7 +156,7 @@ while ($row = mysqli_fetch_array($similar_products_result)) {
         .card-product img {
             width: 100%;
             height: 200px; /* Cố định chiều cao của hình ảnh */
-            object-fit: cover;
+            object-fit: contain;
             border-bottom: 1px solid #ddd;
         }
 
@@ -196,11 +197,19 @@ while ($row = mysqli_fetch_array($similar_products_result)) {
                 <!-- Slideshow -->
                 <div id="productCarousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
-                        <?php foreach ($images as $index => $image_url): ?>
-                            <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
-                                <img class="d-block w-100" src="backend/assets/uploads/products/<?=$image_url?>" alt="Slide <?= $index + 1 ?>">
+                        <?php if (empty($images)): ?>
+                            <!-- If no images, use the thumbnail as the only image -->
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="backend/assets/uploads/products/<?=$product['thumbnail']?>" alt="Slide 1">
                             </div>
-                        <?php endforeach; ?>
+                        <?php else: ?>
+                            <!-- Loop through the images array -->
+                            <?php foreach ($images as $index => $image_url): ?>
+                                <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
+                                    <img class="d-block w-100" src="backend/assets/uploads/products/<?=$image_url?>" alt="Slide <?= $index + 1 ?>">
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </div>
                     <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

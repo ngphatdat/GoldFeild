@@ -11,7 +11,7 @@ $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $offset = ($page - 1) * $limit;
 
 // Xây dựng câu truy vấn tìm kiếm
-$sql = "SELECT p.id, p.name, p.price, i.image_url
+$sql = "SELECT p.id, p.name, p.price, COALESCE(p.thumbnail, i.image_url) AS image_url
         FROM products AS p
         LEFT JOIN product_images AS i ON p.id = i.product_id
         WHERE 1";
@@ -46,7 +46,7 @@ $totalRows = mysqli_fetch_assoc($countResult)['total'];
 $totalPages = ceil($totalRows / $limit);
 
 // Thực hiện truy vấn để lấy sản phẩm với phân trang
-$sql .= " GROUP BY p.id ORDER BY name LIMIT $limit OFFSET $offset";
+$sql .= " GROUP BY p.id ORDER BY p.name LIMIT $limit OFFSET $offset";
 $result = mysqli_query($conn, $sql);
 $sp = [];
 while ($row = mysqli_fetch_array($result)) {
@@ -54,7 +54,7 @@ while ($row = mysqli_fetch_array($result)) {
         'id' => $row['id'],
         'name' => $row['name'],
         'price' => $row['price'],
-        'image_url' => $row['image_url'], // Lấy URL hình ảnh từ bảng product_images
+        'image_url' => $row['image_url'], // Sử dụng image_url đã được xử lý
     );
 }
 
@@ -78,35 +78,65 @@ while ($row = mysqli_fetch_assoc($categoriesResult)) {
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
         }
         .container {
-            max-width: 1200px;
-            margin: auto;
+            max-width: 1400px;
             padding: 20px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
+        .search-form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .search-form input[type="text"], 
+        .search-form select {
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            flex: 1;
+            min-width: 150px;
+        }
+        .search-form input[type="submit"] {
+            padding: 10px 15px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            min-width: 120px;
+        }
+        .search-form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
         .card-product {
-            margin: 0.5rem;
+            margin: 5px;
+            margin-bottom: 20px;
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             overflow: hidden;
         }
-
+        .col-12.col-sm-6.col-md-4.col-lg-3 {
+            margin-bottom: 10px;
+        }
         .card-product img {
-            width: 100%;
-            height: 200px; /* Cố định chiều cao hình ảnh */
-            object-fit: cover
-            /* Đảm bảo hình ảnh không bị biến dạng và lấp đầy khung */
+              width: 100%; 
+             height: 200px; 
+            object-fit: contain; 
         }
         .card-product .card-body {
             padding: 15px;
@@ -144,11 +174,39 @@ while ($row = mysqli_fetch_assoc($categoriesResult)) {
             border-top: 1px solid #ddd;
             margin: 20px 0;
         }
+        @media (max-width: 768px) {
+            .search-form {
+                flex-direction: column;
+                align-items: center;
+            }
+            .search-form input[type="text"], 
+            .search-form select {
+                width: 100%;
+                max-width: 400px;
+            }
+            .search-form input[type="submit"] {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
     </style>
 </head>
 <body>
     <?php include_once('header.php'); ?>
     <div class="container mt-5 mb-3">
+        <form method="GET" class="search-form">
+            <input type="text" name="keyword" placeholder="Tìm kiếm sản phẩm" value="<?= htmlspecialchars($keyword) ?>">
+            <select name="category_id">
+                <option value="">Chọn danh mục</option>
+                <?php foreach ($categories as $category): ?>
+                    <option value="<?= $category['id'] ?>" <?= $category_id == $category['id'] ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($category['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <input type="submit" value="Tìm kiếm">
+        </form>
+        
         <div class="row">
             <div class="col-md-12">
                 <h3 class="text-center">SẢN PHẨM CÔNG TY PHÂN PHỐI</h3>

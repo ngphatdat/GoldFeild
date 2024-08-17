@@ -10,6 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $payment_method = $_POST['payment_method'];
     $note = ''; // Nếu có trường ghi chú trong form
 
+    // Lấy user_id từ session, nếu có đăng nhập
+    $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : NULL;
+
     // Tính tổng tiền đơn hàng
     $total_money = 0;
     foreach ($_SESSION['cart'] as $product_id => $product) {
@@ -17,9 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Lưu đơn hàng vào bảng orders
-    $query = "INSERT INTO orders (fullname, address, phone_number, email, note, total_money, payment_method, order_date) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())";
+    $query = "INSERT INTO orders (fullname, address, phone_number, email, note, total_money, payment_method, order_date, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), ?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param('sssssds', $fullname, $address, $phone, $email, $note, $total_money, $payment_method);
+    $stmt->bind_param('sssssisi', $fullname, $address, $phone, $email, $note, $total_money, $payment_method, $user_id);
     $stmt->execute();
     $order_id = $stmt->insert_id; // Lấy ID của đơn hàng mới
 

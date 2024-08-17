@@ -1,15 +1,14 @@
 <?php
-session_start(); // Đảm bảo session bắt đầu ở đây
-$current_page = basename($_SERVER['PHP_SELF']);
+session_start(); // Khởi tạo session
 include_once('connectdb.php');
 
+$current_page = basename($_SERVER['PHP_SELF']);
 $is_logged_in = isset($_SESSION['user_name']);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -156,7 +155,7 @@ $is_logged_in = isset($_SESSION['user_name']);
                         <li class="nav-item <?php if ($current_page == 'index.php') echo 'active'; ?>">
                             <a class="nav-link" href="index.php">TRANG CHỦ<span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item <?php if ($current_page == 'sanpham.php') echo 'active'; ?>">
+                        <li class="nav-item <?php if ($current_page == 'products.php') echo 'active'; ?>">
                             <a class="nav-link" href="products.php">SẢN PHẨM<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item <?php if ($current_page == 'solution.php') echo 'active'; ?>">
@@ -168,6 +167,14 @@ $is_logged_in = isset($_SESSION['user_name']);
                         <li class="nav-item <?php if ($current_page == 'about.php') echo 'active'; ?>">
                             <a class="nav-link" href="about.php">VỀ CHÚNG TÔI<span class="sr-only">(current)</span></a>
                         </li>
+                        <?php if ($is_logged_in): ?>
+                            <li class="nav-item <?php if ($current_page == 'cart.php') echo 'active'; ?>">
+                                <a class="nav-link" href="cart.php">GIỎ HÀNG<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item <?php if ($current_page == 'order.php') echo 'active'; ?>">
+                                <a class="nav-link" href="order.php">ĐƠN HÀNG<span class="sr-only">(current)</span></a>
+                            </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </nav>

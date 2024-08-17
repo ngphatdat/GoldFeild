@@ -1,6 +1,10 @@
 <?php
 session_start(); // Đảm bảo session bắt đầu ở đây
 include_once('connectdb.php');
+// Bật hiển thị lỗi
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $phone_number = $_POST['phone_number'];
@@ -21,6 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Đăng nhập thành công
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['user_name'] = $row['fullname'];
+        
+        // Xóa đầu ra trước khi chuyển hướng
+        ob_clean();
+        
         header('Location: index.php'); // Chuyển hướng về trang chính
         exit();
     } else {
@@ -28,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -91,4 +100,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <p>Chưa có tài khoản? <a href="user_register.php">Đăng ký ngay</a></p>
     </div>
 </body>
+<?php include_once('footer.php')?>
 </html>

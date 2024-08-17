@@ -1,6 +1,4 @@
 <?php
-session_start(); // Đặt session_start() ở đầu file
-
 include_once('connectdb.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -20,23 +18,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error_message = 'Vui lòng điền đầy đủ thông tin.';
     } elseif ($password !== $confirm_password) {
         $error_message = 'Mật khẩu xác nhận không khớp.';
+    } elseif (!preg_match('/^\d{10,}$/', $phone_number)) {
+        $error_message = 'Số điện thoại phải có ít nhất 10 chữ số.';
+    } elseif (strlen($password) < 8) {
+        $error_message = 'Mật khẩu phải có ít nhất 8 ký tự.';
     } else {
         // Kiểm tra xem số điện thoại đã tồn tại chưa
-        $sql_check = <<<EOT
-        SELECT id FROM users
-        WHERE phone_number = '$phone_number'
-        LIMIT 1;
-        EOT;
-
+        $sql_check = "SELECT id FROM users WHERE phone_number = '$phone_number' LIMIT 1";
         $result_check = mysqli_query($conn, $sql_check);
         if (mysqli_num_rows($result_check) > 0) {
             $error_message = 'Số điện thoại đã tồn tại.';
         } else {
             // Chèn dữ liệu vào cơ sở dữ liệu
-            $sql_insert = <<<EOT
-            INSERT INTO users (fullname, phone_number, address, password, date_of_birth, created_at)
-            VALUES ('$fullname', '$phone_number', '$address', '$hashed_password', '$date_of_birth', NOW());
-            EOT;
+            $sql_insert = "INSERT INTO users (fullname, phone_number, address, password, date_of_birth, created_at, role_id)
+                           VALUES ('$fullname', '$phone_number', '$address', '$hashed_password', '$date_of_birth', NOW(), 1)";
 
             if (mysqli_query($conn, $sql_insert)) {
                 $success_message = 'Đăng ký thành công. Bạn có thể đăng nhập ngay.';
@@ -115,9 +110,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="container">
     <h2>Đăng Ký</h2>
     <?php if (!empty($error_message)): ?>
-        <div class="message error"><?= $error_message ?></div>
+        <div class="message error"><?= htmlspecialchars($error_message) ?></div>
     <?php elseif (!empty($success_message)): ?>
-        <div class="message success"><?= $success_message ?></div>
+        <div class="message success"><?= htmlspecialchars($success_message) ?></div>
     <?php endif; ?>
     <form action="user_register.php" method="POST">
         <div class="form-group">
@@ -150,6 +145,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </form>
     <p>Đã có tài khoản? <a href="user_login.php">Đăng nhập ngay</a></p>
 </div>
-
 </body>
 </html>
