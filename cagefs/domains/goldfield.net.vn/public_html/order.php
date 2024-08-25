@@ -99,6 +99,8 @@ $conn->close();
         .pagination a:hover {
             background-color: #0056b3;
             color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 3px solid rgba(237, 169, 64, 1);
         }
     </style>
 </head>

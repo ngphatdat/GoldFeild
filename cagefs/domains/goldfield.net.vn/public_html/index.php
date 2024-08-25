@@ -1,6 +1,5 @@
-<?php include_once('header.php');
-session_start(); 
-?>
+<?php include_once('header.php'); ?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,30 +28,35 @@ session_start();
 
         /* Swiper Slide Image */
         .swiper-slide img {
-            width: 100%;
-            height: 300px; /* Điều chỉnh chiều cao hình ảnh */
+            width: 80%;
+            height: 200px; /* Điều chỉnh chiều cao hình ảnh */
             object-fit: contain; /* Giữ tỷ lệ hình ảnh và phủ kín không gian */
         }
 
         /* Swiper Slide Video */
         .swiper-slide video {
-            width: 100%;
-            height: 100%; /* Điều chỉnh chiều cao để phù hợp với chiều cao của slide */
+            width: 80%;
+            height: 80%; /* Điều chỉnh chiều cao để phù hợp với chiều cao của slide */
             object-fit: cover; /* Đảm bảo video không bị biến dạng và phủ kín không gian */
             border-radius: 8px; /* Bo góc cho video để tạo hiệu ứng mềm mại */
         }
 
         /* Product Heading */
         .product-heading {
-            font-size: 1.75rem;
-            font-weight: bold;
-            color: #333;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 90%;
-            margin: 0 auto;
+            text-align: center; /* Canh giữa tiêu đề */
+            margin-top: 1rem; /* Khoảng cách trên */
+            position: relative; /* Để đường viền có thể được đặt chính xác */
+            font-size: 1.5rem; /* Kích thước chữ, có thể thay đổi */
+        }
+
+        .product-heading::after {
+            content: ""; /* Nội dung rỗng cho pseudo-element */
+            display: block; /* Hiển thị dưới dạng khối để chiếm toàn bộ chiều rộng */
+            width: 60%; /* Độ rộng của đường viền, thay đổi theo nhu cầu */
+            height: 3px; /* Độ dày của đường viền */
+            background-color: #3498db; /* Màu của đường viền */
+            margin: 0 auto; /* Canh giữa đường viền */
+            margin-top: 0.5rem; /* Khoảng cách giữa tiêu đề và đường viền */
         }
 
         /* Product Description */
@@ -75,6 +79,7 @@ session_start();
             overflow: hidden; /* Đảm bảo nội dung không bị tràn */
             border: 3px solid rgba(76,168,90,1);
             min-height: 500px; /* Đảm bảo chiều cao tối thiểu của card */
+            cursor: pointer; /* Thay đổi con trỏ chuột để cho thấy đây là phần có thể nhấp vào */
         }
 
         .card:hover {
@@ -84,8 +89,8 @@ session_start();
         }
 
         .card-img-top {
-             width: 100%; 
-             height: 300px; 
+            width: 100%; 
+            height: 300px; 
             object-fit: contain; 
         }
 
@@ -111,9 +116,15 @@ session_start();
         /* Footer Swiper Container */
         .swiper-container.footer-swiper {
             width: 100%;
-            height: 400px; /* Điều chỉnh chiều cao của swiper để phù hợp với nội dung */
-            margin: 50px 0; /* Điều chỉnh khoảng cách trên và dưới */
+            height: 400px; 
+            margin: 30px 0; 
             position: relative;
+
+        }
+        .news{
+            border-radius: 15px; 
+            border: 6px solid rgba(237,169,64,1); 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         /* Swiper Slide Image for Footer */
@@ -143,6 +154,22 @@ session_start();
         .swiper-pagination-bullet-active {
             background: #e74c3c; /* Màu nền của chấm phân trang đang hoạt động */
         }
+
+        .news_text {
+            text-align: center; /* Canh giữa tiêu đề */
+            margin-top: 1rem; /* Khoảng cách trên */
+            position: relative; /* Để đường viền có thể được đặt chính xác */
+        }
+
+        .news_text::after {
+            content: ""; /* Nội dung rỗng cho pseudo-element */
+            display: block; /* Hiển thị dưới dạng khối để chiếm toàn bộ chiều rộng */
+            width: 50%; /* Độ rộng của đường viền, thay đổi theo nhu cầu */
+            height: 2px; /* Độ dày của đường viền */
+            background-color: #3498db; /* Màu của đường viền */
+            margin: 0 auto; /* Canh giữa đường viền */
+            margin-top: 0.5rem; /* Khoảng cách giữa tiêu đề và đường viền */
+        }
     </style>
 </head>
 <body>
@@ -152,17 +179,9 @@ session_start();
         <div class="swiper-container main-swiper">
             <div class="swiper-wrapper">               
                 <div class="swiper-slide">
-                    <video class="swiper-video" autoplay muted>
-                        <source src="backend/assets/imgs/bg5.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <img class="swiper-video" src="backend/assets/imgs/bg5.gif" alt="Animated GIF">
                 </div>
-                <!-- <div class="swiper-slide">
-                    <img src="backend/assets/imgs/bg1.jpg" alt="Slide 1">
-                </div>
-                <div class="swiper-slide">
-                    <img src="backend/assets/imgs/bg4.jpg" alt="Slide 3">
-                </div> -->
+                <!-- Các slide khác có thể được thêm vào đây -->
             </div>
             <!-- <div class="swiper-pagination"></div> -->
         </div>
@@ -223,9 +242,8 @@ session_start();
         </div>
     </div>
 
-    <div class="container">
-        <h3 class="product-heading text-center mt-4">TIN TỨC GOLDFIELD</h3>
-        <!-- Footer Swiper -->
+    <div class="container news">
+        <h5 class="news_text text-center mt-4">TIN TỨC GOLDFIELD</h5>
         <div class="swiper-container footer-swiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -263,57 +281,58 @@ session_start();
         </div>
     </div>
 
-    <?php include_once('footer.php')?>
+    <?php include_once('footer.php'); ?>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script>
-    // Initialize Main Swiper
-    var mainSwiper = new Swiper('.main-swiper', {
-        slidesPerView: 1,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        loop: true,
-        autoplay: {
-            delay: 5000, // Thay đổi nếu cần thiết
-            disableOnInteraction: false, // Cho phép autoplay tiếp tục sau khi người dùng tương tác
-        },
-    });
-
-    function handleVideoSlides() {
-        var slides = document.querySelectorAll('.main-swiper .swiper-slide');
-
-        slides.forEach(function(slide) {
-            var video = slide.querySelector('video');
-            if (video) {
-                video.addEventListener('play', function() {
-                    // Khi video bắt đầu phát, tạm dừng autoplay của Swiper
-                    mainSwiper.autoplay.stop();
-                });
-
-                video.addEventListener('ended', function() {
-                    // Khi video kết thúc, chuyển đến slide tiếp theo
-                    mainSwiper.slideNext();
-                    // Khôi phục autoplay của Swiper
-                    mainSwiper.autoplay.start();
-                });
-
-                // Khi slide chuyển, dừng video nếu có
-                mainSwiper.on('slideChangeTransitionEnd', function() {
-                    slides.forEach(function(s) {
-                        var v = s.querySelector('video');
-                        if (v && !v.paused) {
-                            v.pause();
-                        }
-                    });
-                });
-            }
+    <script>
+        // Initialize Main Swiper
+        var mainSwiper = new Swiper('.main-swiper', {
+            slidesPerView: 1,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            loop: true,
+            autoplay: {
+                delay: 5000, // Thay đổi nếu cần thiết
+                disableOnInteraction: false, // Cho phép autoplay tiếp tục sau khi người dùng tương tác
+            },
         });
-    }
 
-    // Call the function to set up event listeners
-    handleVideoSlides();
+        function handleVideoSlides() {
+            var slides = document.querySelectorAll('.main-swiper .swiper-slide');
+
+            slides.forEach(function(slide) {
+                var video = slide.querySelector('video');
+                if (video) {
+                    video.addEventListener('play', function() {
+                        // Khi video bắt đầu phát, tạm dừng autoplay của Swiper
+                        mainSwiper.autoplay.stop();
+                    });
+
+                    video.addEventListener('ended', function() {
+                        // Khi video kết thúc, chuyển đến slide tiếp theo
+                        mainSwiper.slideNext();
+                        // Khôi phục autoplay của Swiper
+                        mainSwiper.autoplay.start();
+                    });
+
+                    // Khi slide chuyển, dừng video nếu có
+                    mainSwiper.on('slideChangeTransitionEnd', function() {
+                        slides.forEach(function(s) {
+                            var v = s.querySelector('video');
+                            if (v && !v.paused) {
+                                v.pause();
+                            }
+                        });
+                    });
+                }
+            });
+        }
+
+        // Call the function to set up event listeners
+        handleVideoSlides();
+
         // Initialize Footer Swiper
         var footerSwiper = new Swiper('.footer-swiper', {
             slidesPerView: 1, /* Số lượng slide hiển thị trên màn hình lớn */

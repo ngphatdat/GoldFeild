@@ -1,86 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="backend/vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>Document</title>
+    <title>Quy trình dùng sản phẩm cho cây mít - Goldfield</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .foot{
-            min-height: 100%;
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .icon-color {
-    color: #e0c436; /* Thay đổi mã màu theo ý muốn của bạn */
-}
 
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
 
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+        }
+
+        .img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h2 {
+            font-size: 1.5rem;
+            color: #2980b9;
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            font-size: 1rem;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+
+        .content ul {
+            list-style-type: none; /* Remove default list bullets */
+            padding-left: 0;
+        }
+
+        .content ul li {
+            margin-bottom: 10px; /* Add space between list items */
+            position: relative; /* Positioning for Font Awesome icon */
+            padding-left: 30px; /* Space for the icon */
+        }
+
+        .content ul li i {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #2980b9; /* Icon color */
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #95a5a6;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                padding: 10px;
+            }
+
+            .content h2 {
+                font-size: 1.25rem;
+            }
+
+            .content p {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
-<body>
-    <div class="container-fluid mt-5 foot" style="background-color: #ffffff;">
-        <div class="row">
-            <div class="container mt-2">
-                <div class="row">
-                    <div class="col-md-4">
-                        <b>LIÊN HỆ VỚI CHÚNG TÔI</b><br>
-                        <table style="height: 150px;">
-                            <tr>
-                                <td><i class="fa fa-map-marker icon-color" aria-hidden="true"></i> K27, đường số 3, Nông Thổ Sản, Phú Thứ, Cái Răng, Cần Thơ</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <i class="fa fa-phone icon-color" aria-hidden="true"></i> 
-                                    <a href="tel:0846337249" style="text-decoration: none; color: inherit;">0846 337 249</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <i class="fa fa-envelope icon-color" aria-hidden="true"></i> 
-                                    <a href="mailto:Ctygoldfield@gmail.com" style="text-decoration: none; color: inherit;">ctygoldfield@gmail.com</a>
-                                </td>
-                            </tr>
-                        </table>
-
-                    </div>
-                    <div class="col-md-4">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d825.9772951150579!2d105.75053027010618!3d10.014190269113211!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x60d35eec92ab5f6a!2sC%C3%B4ng%20Ty%20Tnhh%20Goldfield!5e0!3m2!1svi!2s!4v1649128213714!5m2!1svi!2s" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    <div class="col-md-4">
-                        <b>KẾT NỐI VỚI CHÚNG TÔI</b><br>
-                        <table style="height: 150px;">
-                            <tr>
-                                <td>
-                                    <a href="https://www.facebook.com/goldfield.vn" target="_blank" style="text-decoration: none; color: #4267B2;">
-                                        <i class="fab fa-facebook" aria-hidden="true"></i> Facebook: GOLDFIELD
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="https://www.tiktok.com/@yourusername" target="_blank" style="text-decoration: none; color: inherit;">
-                                        <i class="fab fa-tiktok" aria-hidden="true"></i> TikTok: GOLDFIELD
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="https://www.youtube.com/channel/yourchannelid" target="_blank" style="text-decoration: none;color: inherit; ">
-                                        <i class="fab fa-youtube" aria-hidden="true" style=" color: #FF0000;"></i> YouTube: GOLDFIELD
-                                    </a>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-    <?php include_once("script.php")?>
+<body class="container-xl">
+    <header>
+        <h1>Quy trình dùng sản phẩm cho cây mít</h1>
+        <p>Cây mít không chỉ mang lại thu nhập ổn định mà còn cải thiện chất lượng đất, tạo nền tảng vững chắc cho sự phát triển bền vững.</p>
+    </header>
+    <img class="img" src="backend/assets/solution/jackfruit.jpg" alt="Hình ảnh cây mít">
+    <section class="content">
+        <h2>Chăm sóc cây mít toàn diện</h2>
+        <p>Tại Goldfield, chúng tôi cung cấp quy trình chăm sóc cây mít toàn diện, bao gồm:</p>
+        <ul>
+            <li><i class="fas fa-seedling"></i>Bón phân dinh dưỡng để cung cấp các chất cần thiết cho sự phát triển của cây.</li>
+            <li><i class="fas fa-tint"></i>Tưới nước tối ưu để duy trì độ ẩm phù hợp cho cây mít.</li>
+            <li><i class="fas fa-bug"></i>Kiểm soát sâu bệnh hiệu quả để bảo vệ cây khỏi các mối đe dọa.</li>
+        </ul>
+        <p>Nhờ sự hỗ trợ chuyên sâu từ đội ngũ kỹ thuật viên, chúng tôi giúp nhà vườn tối ưu hóa tiềm năng cây mít, đạt năng suất cao và duy trì sự bền vững trong canh tác.</p>
+        <h2>Những triệu chứng thiếu dinh dưỡng ở lá của cây mít</h2>
+        <img class="img" src="backend/assets/solution/thieu_dinh_duong_la.jpg" alt="Hình ảnh sầu riêng">  
+        <h2>Ảnh hưởng của PH đến cây mít</h2>
+        <img class="img" src="backend/assets/solution/ph.jpg" alt="Hình ảnh sầu riêng"> 
+    </section>
 </body>
 </html>

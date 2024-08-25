@@ -1,8 +1,7 @@
 <?php
 include_once('header.php');
-session_start(); // Đảm bảo session bắt đầu ở đây
+session_start(); // Ensure session starts here
 
-// Kiểm tra xem người dùng đã đăng nhập chưa
 if (!isset($_SESSION['user_id'])) {
     ?>
     <!DOCTYPE html>
@@ -35,71 +34,31 @@ if (!isset($_SESSION['user_id'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Giỏ hàng của bạn (Your Shopping Cart)</title>
+  <title>Giỏ hàng của bạn</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
     .container {
       max-width: 1600px;
       margin: 0 auto;
     }
-    .btn-custom {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 16px;
-      font-weight: bold;
-      text-align: center;
-      text-decoration: none;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
-    .btn-custom-success {
-      background-color: #28a745;
-      color: #fff;
-    }
-    .btn-custom-success:hover {
-      background-color: #218838;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .btn-custom-primary {
-      background-color: #007bff;
-      color: #fff;
-    }
-    .btn-custom-primary:hover {
-      background-color: #0056b3;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .btn-custom-danger {
-      background-color: #dc3545;
-      color: #fff;
-    }
-    .btn-custom-danger:hover {
-      background-color: #c82333;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .btn-container {
-      text-align: center;
-      margin-top: 20px;
-    }
+
     .table-responsive {
       margin-top: 20px;
     }
     .table th, .table td {
       text-align: center;
       white-space: nowrap;
-      font-size: 10px; /* Kích thước chữ trong bảng nhỏ hơn */
+      font-size: 10px; /* Smaller font size for table */
     }
     .table thead th {
-      font-size: 12px; /* Kích thước chữ của tiêu đề lớn hơn một chút */
+      font-size: 12px; /* Slightly larger font size for table headers */
     }
     @media (max-width: 768px) {
       .table-responsive {
         overflow-x: auto;
       }
       .table th, .table td {
-        font-size: 12px; /* Kích thước chữ nhỏ hơn trên thiết bị di động */
+        font-size: 12px; /* Smaller font size on mobile devices */
       }
     }
   </style>
@@ -143,7 +102,7 @@ if (!isset($_SESSION['user_id'])) {
               </tr>
             <?php else: ?>
               <tr>
-                <td colspan="5" class="text-center">Giỏ hàng của bạn trống (Your cart is empty)</td>
+                <td colspan="5" class="text-center">Giỏ hàng của bạn trống </td>
               </tr>
             <?php endif; ?>
         </tbody>
@@ -151,9 +110,12 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 
     <div class="btn-container">
-      <button type="submit" class="btn btn-custom btn-custom-danger">Xóa đã chọn (Remove Selected)</button>
+      <button type="submit" class="btn btn-danger">Xóa đã chọn </button>
     </div>
   </form>
+  <div class="alert alert-info promo-alert">
+    <strong>Khuyến mãi:</strong> Giao hàng miễn phí cho hóa đơn từ 100.000 VNĐ trở lên!
+</div>
 
   <div class="container mt-5">
     <h1>Thông tin giao hàng</h1>
@@ -170,17 +132,13 @@ if (!isset($_SESSION['user_id'])) {
         <label for="phone">Số điện thoại</label>
         <input type="tel" class="form-control" id="phone" name="phone" required pattern="[0-9]{10,11}">
       </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" required>
-      </div>
       <div class="btn-container">
-        <button type="submit" class="btn btn-custom btn-custom-success">Xác nhận đơn hàng</button>
-        <a href="products.php" class="btn btn-custom btn-custom-primary">Tiếp tục mua sắm</a>
+        <button type="submit" class="btn btn-success">Xác nhận đơn hàng</button>
+        <a href="products.php" class="btn btn-primary">Tiếp tục mua sắm</a>
       </div>
     </form>
+    
   </div>
-
   <?php include('footer.php'); ?>
 </div>
 </body>

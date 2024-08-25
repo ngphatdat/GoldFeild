@@ -41,6 +41,7 @@
             height: auto;
             margin: 0 auto;
             border-radius: 8px;
+            margin-bottom: 20px;
         }
 
         .content {
@@ -55,7 +56,7 @@
         .content h2 {
             font-size: 1.5rem;
             color: #2980b9;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         .content p {
@@ -87,7 +88,13 @@
         <p>Với việc áp dụng công nghệ tiên tiến và sản phẩm chất lượng, chúng tôi giúp bạn tiết kiệm thời gian và công sức, đồng thời đảm bảo mùa thu hoạch bội thu.</p>
         <h2>Đối tác đáng tin cậy</h2>
         <p>Hãy để Goldfield trở thành đối tác đáng tin cậy của bạn, cùng nhau xây dựng những vườn sầu riêng trĩu quả.</p>
-    </section>
+        <h2>Các dấu hiệu bệnh trên cây sầu riêng</h2>
+        <img class="img" src="backend/assets/solution/cac_benh_cay_sau_rieng.png" alt="Hình ảnh sầu riêng">    
+        <h2>Những triệu chứng thiếu dinh dưỡng ở lá của cây sầu riêng</h2>
+        <img class="img" src="backend/assets/solution/thieu_hut_dinh_duong_sau_rieng.jpg" alt="Hình ảnh sầu riêng">  
+        <h2>Ảnh hưởng của PH đến cây sầu riêng</h2>
+        <img class="img" src="backend/assets/solution/ph.jpg" alt="Hình ảnh sầu riêng"> 
 
+    </section>
 </body>
 </html>

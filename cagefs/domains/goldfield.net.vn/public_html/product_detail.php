@@ -58,7 +58,8 @@ while ($row = mysqli_fetch_array($similar_products_result)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi tiết sản phẩm</title>
+    <!-- Đặt tên sản phẩm làm tiêu đề trang -->
+    <title><?= htmlspecialchars($product['name']) ?></title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -240,6 +241,11 @@ while ($row = mysqli_fetch_array($similar_products_result)) {
                 <div class="product-description">
                     <strong>Mô tả sản phẩm:</strong> <?=$product['description']?>
                 </div>
+                <hr>
+                <div class="alert alert-info promo-alert">
+                    <strong>Khuyến mãi:</strong> Giao hàng miễn phí cho hóa đơn từ 1.000.000 VNĐ trở lên!
+                </div>
+
             </div>
         </div>
     </div>
@@ -264,24 +270,20 @@ while ($row = mysqli_fetch_array($similar_products_result)) {
         </div>
     </div>
 </div>
-<?php include_once('footer.php') ?>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        // Lấy giá gốc của sản phẩm
-        var unitPrice = parseFloat($('#productPrice').text().replace(/[^0-9.,]/g, '').replace(',', '.'));
-        
-        $('#soluong').on('input', function() {
+    $(document).ready(function(){
+        $('#soluong').on('input', function(){
             var quantity = $(this).val();
-            var totalPrice = unitPrice * quantity;
-            $('#totalPrice').text(totalPrice.toLocaleString('en-US') + ' VND');
+            var price = <?= $product['price'] ?>;
+            var totalPrice = quantity * price;
+            $('#totalPrice').text(totalPrice.toLocaleString('vi-VN') + ' VND');
         });
     });
 </script>
-
 </body>
 </html>

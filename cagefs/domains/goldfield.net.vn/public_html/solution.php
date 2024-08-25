@@ -48,16 +48,16 @@
 </head>
 <body>
     <?php include_once('header.php'); ?>
-    <div class="container mt-0" style="background-color: white;">
+    <div class="container-xl mt-0" style="background-color: white;">
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <h2 class="text-center mt-2">GIẢI PHÁP</h2>
                 <div class="tabs">
                     <button class="tablinks" data-electronic="solution_durian">SẦU RIÊNG</button>
-                    <button class="tablinks" data-electronic="solution_mango">XOÀI</button>
-                    <button class="tablinks" data-electronic="solution_rice">LÚA</button>
-                    <button class="tablinks" data-electronic="solution_vegetables">RAU MÀU</button>
+                    <button class="tablinks" data-electronic="solution_mongo">XOÀI</button>
+                    <button class="tablinks" data-electronic="solution_jackfruit">MÍT</button>
+                    <button class="tablinks" data-electronic="solution_vegetables">LÚA Và RAU MÀU</button>
                 </div>
                 <div id="tab-content" class="container">
                     <!-- Nội dung sẽ được tải vào đây -->

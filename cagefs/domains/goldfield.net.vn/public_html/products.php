@@ -144,6 +144,7 @@ while ($row = mysqli_fetch_assoc($categoriesResult)) {
         }
         .card-title {
             margin: 0;
+            color: black;
             font-size: 1.25rem;
             font-weight: bold;
         }
@@ -170,8 +171,8 @@ while ($row = mysqli_fetch_assoc($categoriesResult)) {
             color: #fff;
         }
         hr {
-            border: none;
-            border-top: 1px solid #ddd;
+            border: 3px;
+            border-top: 1px solid red;
             margin: 20px 0;
         }
         @media (max-width: 768px) {
@@ -187,6 +188,22 @@ while ($row = mysqli_fetch_assoc($categoriesResult)) {
             .search-form input[type="submit"] {
                 width: 100%;
                 max-width: 200px;
+            }
+            .product-heading {
+            text-align: center; /* Canh giữa tiêu đề */
+            margin-top: 1.2rem; /* Khoảng cách trên */
+            position: relative; /* Để đường viền có thể được đặt chính xác */
+            font-size: 1.7rem; /* Kích thước chữ, có thể thay đổi */
+        }
+
+            .product-heading::after {
+                content: ""; /* Nội dung rỗng cho pseudo-element */
+                display: block; /* Hiển thị dưới dạng khối để chiếm toàn bộ chiều rộng */
+                width: 60%; /* Độ rộng của đường viền, thay đổi theo nhu cầu */
+                height: 3px; /* Độ dày của đường viền */
+                background-color: #3498db; /* Màu của đường viền */
+                margin: 0 auto; /* Canh giữa đường viền */
+                margin-top: 0.5rem; 
             }
         }
     </style>
@@ -209,7 +226,7 @@ while ($row = mysqli_fetch_assoc($categoriesResult)) {
         
         <div class="row">
             <div class="col-md-12">
-                <h3 class="text-center">SẢN PHẨM CÔNG TY PHÂN PHỐI</h3>
+                <h3 class="text-center product-heading">SẢN PHẨM CÔNG TY PHÂN PHỐI</h3>
                 <hr>
                 <div class="row">
                     <?php if (!empty($sp)): ?>
