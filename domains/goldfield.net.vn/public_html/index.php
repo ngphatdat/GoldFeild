@@ -204,19 +204,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <a href="detail.php?id=21">
+                <a href="product_detail.php?id=3">
                     <div class="card product-card">
                         <img class="card-img-top" src="backend/assets/uploads/products/sp1.jpg" alt="Nutrifoli">
                         <div class="card-body">
                             <h5 class="card-title">Nutrifoli</h5>
                             <p class="card-text price-text">Xem chi tiết</p>
-                            <p class="card-text">Cung cấp Photpho và Kali cho cây trồng, giúp cây phát triển mạnh mẽ, tăng cường khả năng ra hoa và đậu quả.</p>
+                            <p class="card-text">Cung cấp Phosphor và Kali cho cây trồng, giúp cây phát triển mạnh mẽ, tăng cường khả năng ra hoa và đậu quả.</p>
                         </div>
                     </div>
                 </a>
             </div>
             <div class="col-md-4">
-                <a href="product_detail.php?id=21">
+                <a href="product_detail.php?id=30">
                     <div class="card product-card">
                         <img class="card-img-top" src="backend/assets/uploads/products/sp2.jpg" alt="CaCi-Bo">
                         <div class="card-body">

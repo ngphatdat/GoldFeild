@@ -1,0 +1,4 @@
+Redirect 301 /products https://goldfield.net.vn/products.php
+Redirect 301 /solutions https://goldfield.net.vn/solution.php
+Redirect 301 /login https://goldfield.net.vn/user_login.php
+Redirect 301 /admin https://goldfield.net.vn/backend/functions/Admin/admin_login.php

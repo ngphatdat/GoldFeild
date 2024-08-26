@@ -162,7 +162,7 @@ $is_logged_in = isset($_SESSION['user_name']);
                             <a class="nav-link" href="solution.php">GIẢI PHÁP<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item <?php if ($current_page == 'baiviet.php') echo 'active'; ?>">
-                            <a class="nav-link" href="baiviet.php">LẮNG NGHE VÀ CHIA SẼ<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="baiviet.php">LẮNG NGHE VÀ CHIA SẺ<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item <?php if ($current_page == 'about.php') echo 'active'; ?>">
                             <a class="nav-link" href="about.php">VỀ CHÚNG TÔI<span class="sr-only">(current)</span></a>

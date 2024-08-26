@@ -1,25 +1,16 @@
 <?php
-session_start(); // Khởi động phiên
+session_start();
 
-// Kiểm tra xem người dùng đã đăng nhập chưa và có quyền truy cập không
-$showContent = true;
-$message = '';
+// Kiểm tra quyền truy cập
 if (!isset($_SESSION['admin_id']) || $_SESSION['role_id'] != 99) {
-    // Đặt biến để hiển thị thông báo nếu chưa đăng nhập hoặc không có quyền
-    $showContent = false;
-    $message = 'Bạn không có quyền truy cập vào trang này. Vui lòng đăng nhập với quyền truy cập phù hợp.';
+    // Nếu không có quyền truy cập, chuyển hướng người dùng đến trang đăng nhập
+    header("Location: admin_login.php");
+    exit();
 }
-$message = isset($_SESSION['message']) ? $_SESSION['message'] : '';
-unset($_SESSION['message']); // Xóa thông báo sau khi hiển thị
 
-// Kiểm tra quyền truy cập và các xử lý khác như trong mã của bạn
-$showContent = true;
-if (!isset($_SESSION['admin_id']) || $_SESSION['role_id'] != 99) {
-    $showContent = false;
-    $message = 'Bạn không có quyền truy cập vào trang này. Vui lòng đăng nhập với quyền truy cập phù hợp.';
-}
 include 'connectdb.php';
 include 'header.php';
+
 // Xử lý tìm kiếm sản phẩm
 $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
 
@@ -27,6 +18,11 @@ $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
 $itemsPerPage = 10;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 0;
 $offset = $page * $itemsPerPage;
+
+// Xử lý sắp xếp
+$sort = isset($_GET['sort']) ? $_GET['sort'] : 'name';
+$order = isset($_GET['order']) && $_GET['order'] === 'desc' ? 'desc' : 'asc';
+$nextOrder = $order === 'asc' ? 'desc' : 'asc';
 
 // Truy vấn để lấy số lượng sản phẩm
 $sqlCount = "SELECT COUNT(*) as total FROM products WHERE name LIKE ?";
@@ -39,8 +35,8 @@ $rowCount = $resultCount->fetch_assoc();
 $totalItems = $rowCount['total'];
 $totalPages = ceil($totalItems / $itemsPerPage);
 
-// Truy vấn để lấy danh sách sản phẩm
-$sql = "SELECT * FROM products WHERE name LIKE ? LIMIT ? OFFSET ?";
+// Truy vấn để lấy danh sách sản phẩm với sắp xếp
+$sql = "SELECT * FROM products WHERE name LIKE ? ORDER BY $sort $order LIMIT ? OFFSET ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("sii", $searchKeyword, $itemsPerPage, $offset);
 $stmt->execute();
@@ -60,12 +56,14 @@ $uploadFileDir = '../../assets/uploads/products/';
         .rounded-square {
             border-radius: 0.25rem;
         }
+        .sortable th a {
+            color: black;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
-<script>
-            alert("<?php echo htmlspecialchars($_GET['message']); ?>");
-</script>
+
 <div class="container mt-4">
     <h1>Quản lý Sản phẩm</h1>
 
@@ -90,11 +88,13 @@ $uploadFileDir = '../../assets/uploads/products/';
 
     <!-- Bảng sản phẩm -->
     <table class="table">
-        <thead class="table-light">
+        <thead class="table-light sortable">
             <tr>
-                <th>ID</th>
-                <th>Tên</th>
-                <th>Giá</th>
+                <th><a href="?keyword=<?php echo urlencode($keyword); ?>&sort=id&order=<?php echo $nextOrder; ?>">ID</a></th>
+                <th><a href="?keyword=<?php echo urlencode($keyword); ?>&sort=name&order=<?php echo $nextOrder; ?>">Tên</a></th>
+                <th><a href="?keyword=<?php echo urlencode($keyword); ?>&sort=price&order=<?php echo $nextOrder; ?>">Giá</a></th>
+                <th><a href="?keyword=<?php echo urlencode($keyword); ?>&sort=old_price&order=<?php echo $nextOrder; ?>">Giá cũ</a></th>
+                <th>Khuyến mãi</th>
                 <th>Ảnh đại diện</th>
                 <th>Mô tả</th>
                 <th>Hành động</th>
@@ -107,9 +107,13 @@ $uploadFileDir = '../../assets/uploads/products/';
                         <td><?php echo htmlspecialchars($row['id']); ?></td>
                         <td><?php echo htmlspecialchars($row['name']); ?></td>
                         <td><?php echo number_format($row['price']); ?> VNĐ</td>
+                        <td><?php echo number_format($row['old_price']); ?> VNĐ</td>
+                        <td>
+                            <input type="checkbox" disabled <?php echo $row['promotion'] ? 'checked' : ''; ?>>
+                        </td>
                         <td>
                             <?php if ($row['thumbnail']): ?>
-                                <img src="<?php  echo $uploadFileDir . htmlspecialchars($row['thumbnail']); ?>" class="rounded-square" alt="Thumbnail" width="100" height="100">
+                                <img src="<?php echo $uploadFileDir . htmlspecialchars($row['thumbnail']); ?>" class="rounded-square" alt="Thumbnail" width="100" height="100">
                             <?php else: ?>
                                 Chưa có ảnh
                             <?php endif; ?>
@@ -125,7 +129,7 @@ $uploadFileDir = '../../assets/uploads/products/';
                 <?php endwhile; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="6">Không có sản phẩm nào.</td>
+                    <td colspan="8">Không có sản phẩm nào.</td>
                 </tr>
             <?php endif; ?>
         </tbody>
@@ -136,17 +140,17 @@ $uploadFileDir = '../../assets/uploads/products/';
         <nav aria-label="Page navigation">
             <ul class="pagination">
                 <?php if ($page > 0): ?>
-                    <li class="page-item"><a class="page-link" href="?keyword=<?php echo urlencode($keyword); ?>&page=0">Đầu</a></li>
-                    <li class="page-item"><a class="page-link" href="?keyword=<?php echo urlencode($keyword); ?>&page=<?php echo $page - 1; ?>"><i class="fa fa-chevron-left"></i></a></li>
+                    <li class="page-item"><a class="page-link" href="?keyword=<?php echo urlencode($keyword); ?>&sort=<?php echo $sort; ?>&order=<?php echo $order; ?>&page=0">Đầu</a></li>
+                    <li class="page-item"><a class="page-link" href="?keyword=<?php echo urlencode($keyword); ?>&sort=<?php echo $sort; ?>&order=<?php echo $order; ?>&page=<?php echo $page - 1; ?>"><i class="fa fa-chevron-left"></i></a></li>
                 <?php endif; ?>
                 <?php for ($i = 0; $i < $totalPages; $i++): ?>
                     <li class="page-item <?php echo $i == $page ? 'active' : ''; ?>">
-                        <a class="page-link" href="?keyword=<?php echo urlencode($keyword); ?>&page=<?php echo $i; ?>"><?php echo $i + 1; ?></a>
+                        <a class="page-link" href="?keyword=<?php echo urlencode($keyword); ?>&sort=<?php echo $sort; ?>&order=<?php echo $order; ?>&page=<?php echo $i; ?>"><?php echo $i + 1; ?></a>
                     </li>
                 <?php endfor; ?>
                 <?php if ($page < $totalPages - 1): ?>
-                    <li class="page-item"><a class="page-link" href="?keyword=<?php echo urlencode($keyword); ?>&page=<?php echo $page + 1; ?>"><i class="fa fa-chevron-right"></i></a></li>
-                    <li class="page-item"><a class="page-link" href="?keyword=<?php echo urlencode($keyword); ?>&page=<?php echo $totalPages - 1; ?>">Cuối</a></li>
+                    <li class="page-item"><a class="page-link" href="?keyword=<?php echo urlencode($keyword); ?>&sort=<?php echo $sort; ?>&order=<?php echo $order; ?>&page=<?php echo $page + 1; ?>"><i class="fa fa-chevron-right"></i></a></li>
+                    <li class="page-item"><a class="page-link" href="?keyword=<?php echo urlencode($keyword); ?>&sort=<?php echo $sort; ?>&order=<?php echo $order; ?>&page=<?php echo $totalPages - 1; ?>">Cuối</a></li>
                 <?php endif; ?>
             </ul>
         </nav>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quy trình dùng sản phẩm cho cây mít - Goldfield</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset CSS */
         * {
@@ -71,6 +72,16 @@
 
         .content ul li {
             margin-bottom: 10px; /* Add space between list items */
+            position: relative; /* Positioning for Font Awesome icon */
+            padding-left: 30px; /* Space for the icon */
+        }
+
+        .content ul li i {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #2980b9; /* Icon color */
         }
 
         footer {
@@ -109,9 +120,9 @@
         <h2>Chăm sóc cây mít toàn diện</h2>
         <p>Tại Goldfield, chúng tôi cung cấp quy trình chăm sóc cây mít toàn diện, bao gồm:</p>
         <ul>
-            <li>Bón phân dinh dưỡng để cung cấp các chất cần thiết cho sự phát triển của cây.</li>
-            <li>Tưới nước tối ưu để duy trì độ ẩm phù hợp cho cây mít.</li>
-            <li>Kiểm soát sâu bệnh hiệu quả để bảo vệ cây khỏi các mối đe dọa.</li>
+            <li><i class="fas fa-seedling"></i>Bón phân dinh dưỡng để cung cấp các chất cần thiết cho sự phát triển của cây.</li>
+            <li><i class="fas fa-tint"></i>Tưới nước tối ưu để duy trì độ ẩm phù hợp cho cây mít.</li>
+            <li><i class="fas fa-bug"></i>Kiểm soát sâu bệnh hiệu quả để bảo vệ cây khỏi các mối đe dọa.</li>
         </ul>
         <p>Nhờ sự hỗ trợ chuyên sâu từ đội ngũ kỹ thuật viên, chúng tôi giúp nhà vườn tối ưu hóa tiềm năng cây mít, đạt năng suất cao và duy trì sự bền vững trong canh tác.</p>
         <h2>Những triệu chứng thiếu dinh dưỡng ở lá của cây mít</h2>

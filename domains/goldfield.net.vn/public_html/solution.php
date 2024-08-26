@@ -48,7 +48,7 @@
 </head>
 <body>
     <?php include_once('header.php'); ?>
-    <div class="container-xl mt-0" style="background-color: white;">
+    <div class="container mt-0" style="background-color: white;">
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">

@@ -54,7 +54,7 @@
     <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-        <h2 class="text-center mt-2">LẮNG NGHE VÀ CHIA SẼ</h2>
+        <h2 class="text-center mt-2">LẮNG NGHE VÀ CHIA SẺ</h2>
         <div class="tabs">
         <button class="tablinks active" data-electronic="Process">SỬ DỤNG THUỐC AN TOÀN</button>
         <button class="tablinks " data-electronic="share">CHIA SẺ</button>

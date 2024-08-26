@@ -114,7 +114,7 @@ if (!isset($_SESSION['user_id'])) {
     </div>
   </form>
   <div class="alert alert-info promo-alert">
-    <strong>Khuyến mãi:</strong> Giao hàng miễn phí cho hóa đơn từ 100.000 VNĐ trở lên!
+    <strong>Khuyến mãi:</strong> Đơn hàng chưa bao gồm phí vận chuyển
 </div>
 
   <div class="container mt-5">
